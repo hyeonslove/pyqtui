@@ -921,7 +921,7 @@ QPushButton:hover{
               <number>330</number>
              </property>
              <item>
-              <widget class="QPushButton" name="btn_pre">
+              <widget class="QPushButton" name="btn_prev">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                  <horstretch>0</horstretch>
@@ -1652,7 +1652,7 @@ QPushButton:hover{
    </hints>
   </connection>
   <connection>
-   <sender>btn_pre</sender>
+   <sender>btn_prev</sender>
    <signal>clicked()</signal>
    <receiver>Form</receiver>
    <slot>prev_page_button_onClick()</slot>

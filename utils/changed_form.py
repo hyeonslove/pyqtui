@@ -6,5 +6,5 @@ class Windows:
         if pres_form is not None:
             pres_form.close()
         Windows.window_list[chagned_form].init()
-        Windows.window_list[chagned_form].showMaximized()
+        Windows.window_list[chagned_form].show()  # showMaximized()
         Windows.window_list[chagned_form].exec_()
