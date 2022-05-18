@@ -65,12 +65,18 @@ class SLSSelectWindow(QDialog, QWidget, form_mode):
     def __init__(self):
         super().__init__()
 
-    def init(self):
+    def init(self, args=None):
         self.setupUi(self)
-        self.load_word_thread = self.load_word_thread = threading.Thread(target=loadWord,
-                                                                         args=(
-                                                                             self, category_metadata["btn_cate01"],
-                                                                             1))
+        if args is None:
+            self.load_word_thread = self.load_word_thread = threading.Thread(target=loadWord,
+                                                                             args=(
+                                                                                 self, category_metadata["btn_cate01"],
+                                                                                 1))
+        else:
+            self.load_word_thread = self.load_word_thread = threading.Thread(target=loadWord,
+                                                                             args=(
+                                                                                 self, category_metadata[args],
+                                                                                 1))
         self.word_metadata = {}
         self.word_button_list = [
             self.btn_word01,
@@ -147,12 +153,15 @@ class SLSSelectWindow(QDialog, QWidget, form_mode):
         if sender.text() == "로딩중":
             print("데이터를 로딩중입니다.")
             return
-        print(self.word_metadata[sender.text()])
+        Windows.changedWindow(self, "word", self.word_metadata[sender.text()])
 
     def study_button_onClick(self):
         pass
 
     def mode_button_onClick(self):
+        if self.load_word_thread.is_alive():
+            print("데이터를 로딩중입니다")
+            return
         Windows.changedWindow(self, "mode")
 
     def quiz_button_onClick(self):

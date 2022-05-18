@@ -12,15 +12,14 @@ class ModeWindow(QDialog, QWidget, form_mode):
     def __init__(self):
         super().__init__()
 
-
     def __del__(self):
         pass
 
-    def init(self):
+    def init(self, args=None):
         self.setupUi(self)
 
     def sign_language_study_button_onClick(self):
         Windows.changedWindow(self, "sls_select")
 
     def word_study_button_onClick(self):
-        pass
+        self.setupUi(self)

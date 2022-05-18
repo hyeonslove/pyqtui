@@ -1060,5 +1060,265 @@ QPushButton:hover{
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btn_cate01</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>133</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-34</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate02</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>97</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-76</x>
+     <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate03</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-76</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate04</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-57</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate05</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>230</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-19</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate06</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-75</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate07</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-78</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate08</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>329</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-53</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate09</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>116</x>
+     <y>361</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-40</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate10</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-103</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate11</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-47</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate12</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-20</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate13</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-34</x>
+     <y>471</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate14</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>508</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-56</x>
+     <y>505</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate15</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>540</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-66</x>
+     <y>537</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_cate16</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>category_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>571</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-37</x>
+     <y>563</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>category_button_onClick()</slot>
+ </slots>
 </ui>
