@@ -100,6 +100,17 @@ class SLSSelectWindow(QDialog, QWidget, form_mode):
     def __del__(self):
         pass
 
+    def setArgs(self, args):
+        for button in self.word_button_list:
+            button.setText("로딩중")
+        self.load_word_thread = self.load_word_thread = threading.Thread(target=loadWord,
+                                                                         args=(
+                                                                             self, category_metadata[args],
+                                                                             1))
+        self.cate_num = args
+        self.load_word_thread.daemon = True
+        self.load_word_thread.start()
+
     def next_page_button_onClick(self):
         sender = self.sender()
         if not self.load_word_thread.is_alive():
@@ -153,7 +164,7 @@ class SLSSelectWindow(QDialog, QWidget, form_mode):
         if sender.text() == "로딩중":
             print("데이터를 로딩중입니다.")
             return
-        Windows.changedWindow(self, "word", self.word_metadata[sender.text()])
+        Windows.changedWindow(self, "word", (self.word_metadata[sender.text()], sender.text()))
 
     def study_button_onClick(self):
         pass

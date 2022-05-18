@@ -1,10 +1,15 @@
+import ssl
+import cv2
+
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from PyQt5.uic.properties import QtGui
+import urllib.request
 
 from utils.changed_form import Windows
-from utils.pasing import loadCategory
+from utils.pasing import loadCategory, getMovieUrl, getPictureUrl, getExplain
 import threading
 
 form_mode = uic.loadUiType("./uis/word.ui")[0]
@@ -29,10 +34,41 @@ category_metadata = {
 }
 
 
-def init(window):
+def init(window, args):
+    word_num = args[0]
     cate_load = loadCategory()
     for idx, key in enumerate(category_metadata):
         category_metadata[key] = cate_load[idx].category
+    # getMovieUrl, getPictureUrl, getExplain
+    picture_url = getPictureUrl(word_num)
+    movie_url = getMovieUrl(word_num)
+    body = getExplain(word_num)
+    window.lb_word.setText(args[1])
+    window.lb_explain.setText(body)
+
+    url = picture_url[0]
+    context = ssl._create_unverified_context()
+    image = urllib.request.urlopen(url, context=context).read()
+    pixmap = QPixmap()
+    pixmap.loadFromData(image)
+    window.lb_img1.setPixmap(pixmap.scaledToHeight(200, Qt.SmoothTransformation))
+
+    ssl._create_default_https_context = ssl._create_unverified_context
+    urllib.request.urlretrieve(movie_url, "temp.mp4")
+
+    cap = cv2.VideoCapture("temp.mp4")
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
+
+        pixmap = QPixmap(convertToQtFormat)
+        pixmap = pixmap.scaledToWidth(300)
+        window.lb_video.setPixmap(pixmap)
+        cv2.waitKey(40)
 
 
 class WordWindow(QDialog, QWidget, form_mode):
@@ -42,12 +78,19 @@ class WordWindow(QDialog, QWidget, form_mode):
     def __del__(self):
         print()
 
-    def init(self, args=None):
-        self.setupUi(self)
+    def setArgs(self, args):
+        self.lb_video.setText("로딩중")
+        self.lb_img1.setText("로딩중")
+        self.lb_word.setText("로딩중")
+        self.lb_explain.setText("로딩중")
 
-        self.load_data_thread = threading.Thread(target=init, args=(self,))
+        self.load_data_thread = threading.Thread(target=init, args=(self, args,))
         self.load_data_thread.daemon = True
         self.load_data_thread.start()
+
+    def init(self, args=None):
+        self.setupUi(self)
+        self.setArgs(args)
 
     def category_button_onClick(self):
         sender = self.sender()

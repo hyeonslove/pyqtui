@@ -18,6 +18,9 @@ class ModeWindow(QDialog, QWidget, form_mode):
     def init(self, args=None):
         self.setupUi(self)
 
+    def setArgs(self):
+        pass
+
     def sign_language_study_button_onClick(self):
         Windows.changedWindow(self, "sls_select")
 
