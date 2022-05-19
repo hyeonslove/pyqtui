@@ -16,3 +16,13 @@ class Windows:
                 Windows.window_list[chagned_form].setArgs(args)
         Windows.window_list[chagned_form].showMaximized()  # showMaximized()
         # Windows.window_list[chagned_form].exec_()
+
+"""
+        if chagned_form not in Windows.opend_list:
+            Windows.opend_list[chagned_form] = None
+            Windows.window_list[chagned_form].init(args)
+        else:
+            if args is not None:
+                Windows.window_list[chagned_form].setArgs(args)
+        Windows.window_list[chagned_form].showMaximized()  # showMaximized()
+"""

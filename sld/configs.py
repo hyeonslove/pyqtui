@@ -61,7 +61,7 @@ class Config:
         return np.array([i[0] for i in ACTIONS])
 
     @staticmethod
-    def get_action_dict():
+    def get_action():
         return ACTIONS
 
     @staticmethod

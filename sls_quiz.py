@@ -7,6 +7,7 @@ import time
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 import cv2
+import random
 from sld.configs import Config
 from sld.mediapipes import MediaPipe
 from utils.pasing import loadCategory, getWord, numOfPages
@@ -41,6 +42,9 @@ def init(window):
         window.mp.draw_styled_landmarks(image, result)
         remain = time.time() - start
         if remain > Config.WAIT_TIME:
+            if not window.isStart:
+                start = time.time()
+                continue
             print('start')
             sequences = []
             st = time.time()
@@ -64,6 +68,13 @@ def init(window):
             res = window.model.predict(np.expand_dims(sequences, axis=0))[0]
             print("per : " + str(res[np.argmax(res)]) + "\nRes : " +
                   str(Config.get_action_name(window.result_arr[np.argmax(res)])))
+            if str(Config.get_action_name(window.result_arr[np.argmax(res)])) == window.lb_question.text():
+                if int(window.lb_page.text()) + 1 >= 6:
+                    window.isStart = False
+                    window.isPlay = False
+                    break
+                window.lb_page.setText(str(int(window.lb_page.text()) + 1))
+                window.lb_question.setText(window.quiz_word[int(window.lb_page.text()) - 1][1])
             sequence += 1
             start = time.time()
         else:
@@ -85,18 +96,38 @@ class SLSQuizWindow(QDialog, QWidget, form_mode):
     def init(self, args=None):
         self.setupUi(self)
         self.isPlay = True
+        self.isStart = False
         self.lb_camera.setText("로딩중")
+        self.quiz_word = random.sample(Config.get_action()[1:], 5)
         self.init_thread = threading.Thread(target=init, args=(self,))
         self.init_thread.daemon = True
         self.init_thread.start()
 
     def setArgs(self, args):
         self.lb_camera.setText("로딩중")
+        self.btn_pass.setText("시작")
+        self.lb_page.setText("1")
+        self.lb_question.setText("로딩중")
+        self.isPlay = True
+        self.isStart = False
+        self.quiz_word = random.sample(Config.get_action()[1:], 5)
         if args is not None:
-            self.isPlay = True
             self.init_thread = threading.Thread(target=init, args=(self,))
             self.init_thread.daemon = True
             self.init_thread.start()
+
+    def start_button_onClick(self):
+        if not self.isStart:
+            self.isStart = True
+            self.btn_pass.setText("다음")
+            self.lb_question.setText(self.quiz_word[int(self.lb_page.text()) - 1][1])
+        else:
+            if int(self.lb_page.text()) + 1 >= 6:
+                self.isStart = False
+                self.isPlay = False
+                return
+            self.lb_page.setText(str(int(self.lb_page.text()) + 1))
+            self.lb_question.setText(self.quiz_word[int(self.lb_page.text()) - 1][1])
 
     def study_button_onClick(self):
         if self.init_thread.is_alive():

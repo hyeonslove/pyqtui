@@ -524,10 +524,27 @@ QPushButton:hover{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_pass</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>start_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>807</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>807</x>
+     <y>677</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>mode_button_onClick()</slot>
   <slot>study_button_onClick()</slot>
   <slot>result_button_onClick()</slot>
+  <slot>start_button_onClick()</slot>
  </slots>
 </ui>
