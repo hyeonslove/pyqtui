@@ -14,5 +14,5 @@ class Windows:
         else:
             if args is not None:
                 Windows.window_list[chagned_form].setArgs(args)
-        Windows.window_list[chagned_form].show()  # showMaximized()
+        Windows.window_list[chagned_form].showMaximized()  # showMaximized()
         # Windows.window_list[chagned_form].exec_()

@@ -1068,8 +1068,8 @@ QPushButton:hover{
    <slot>category_button_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
-     <y>111</y>
+     <x>149</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>-34</x>
@@ -1100,8 +1100,8 @@ QPushButton:hover{
    <slot>category_button_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>178</y>
+     <x>127</x>
+     <y>176</y>
     </hint>
     <hint type="destinationlabel">
      <x>-76</x>
@@ -1260,8 +1260,8 @@ QPushButton:hover{
    <slot>category_button_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>80</x>
-     <y>472</y>
+     <x>109</x>
+     <y>504</y>
     </hint>
     <hint type="destinationlabel">
      <x>-34</x>
@@ -1317,8 +1317,25 @@ QPushButton:hover{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_replay</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>movie_replay_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>194</x>
+     <y>730</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>category_button_onClick()</slot>
+  <slot>movie_replay_button_onClick()</slot>
  </slots>
 </ui>

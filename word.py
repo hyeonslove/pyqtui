@@ -34,6 +34,22 @@ category_metadata = {
 }
 
 
+def playMovie(window):
+    cap = cv2.VideoCapture("temp.mp4")
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
+
+        pixmap = QPixmap(convertToQtFormat)
+        pixmap = pixmap.scaledToWidth(900)
+        window.lb_video.setPixmap(pixmap)
+        cv2.waitKey(20)
+
+
 def init(window, args):
     word_num = args[0]
     cate_load = loadCategory()
@@ -55,20 +71,7 @@ def init(window, args):
 
     ssl._create_default_https_context = ssl._create_unverified_context
     urllib.request.urlretrieve(movie_url, "temp.mp4")
-
-    cap = cv2.VideoCapture("temp.mp4")
-
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
-
-        pixmap = QPixmap(convertToQtFormat)
-        pixmap = pixmap.scaledToWidth(300)
-        window.lb_video.setPixmap(pixmap)
-        cv2.waitKey(40)
+    playMovie(window)
 
 
 class WordWindow(QDialog, QWidget, form_mode):
@@ -98,6 +101,16 @@ class WordWindow(QDialog, QWidget, form_mode):
             print("데이터를 로딩중입니다.")
             return
         Windows.changedWindow(self, "sls_select", sender.objectName())
+
+    def movie_replay_button_onClick(self):
+        sender = self.sender()
+        if self.load_data_thread.is_alive():
+            print("데이터를 로딩중입니다.")
+            return
+
+        self.load_data_thread = threading.Thread(target=playMovie, args=(self,))
+        self.load_data_thread.daemon = True
+        self.load_data_thread.start()
 
     def study_button_onClick(self):
         pass
