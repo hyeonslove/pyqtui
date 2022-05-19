@@ -56,7 +56,7 @@ def init(window):
                 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
                 pixmap = QPixmap(convertToQtFormat)
-                pixmap = pixmap.scaledToWidth(900)
+                pixmap = pixmap.scaledToWidth(1700)
                 window.lb_camera.setPixmap(pixmap)  # scaledToHeight(200, Qt.SmoothTransformation)
                 # cv2.imshow("utils", image)
                 cv2.waitKey(2)
