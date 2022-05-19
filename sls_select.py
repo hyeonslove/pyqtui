@@ -176,4 +176,7 @@ class SLSSelectWindow(QDialog, QWidget, form_mode):
         Windows.changedWindow(self, "mode")
 
     def quiz_button_onClick(self):
-        pass
+        if self.load_word_thread.is_alive():
+            print("데이터를 로딩중입니다")
+            return
+        Windows.changedWindow(self, "sls_quiz")
