@@ -1333,9 +1333,60 @@ QPushButton:hover{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_learn</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>study_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>627</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>701</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_mode</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>mode_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>547</x>
+     <y>624</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>716</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_quiz</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>quiz_button_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>800</x>
+     <y>622</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>799</x>
+     <y>750</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>category_button_onClick()</slot>
   <slot>movie_replay_button_onClick()</slot>
+  <slot>study_button_onClick()</slot>
+  <slot>mode_button_onClick()</slot>
+  <slot>quiz_button_onClick()</slot>
  </slots>
 </ui>

@@ -113,10 +113,19 @@ class WordWindow(QDialog, QWidget, form_mode):
         self.load_data_thread.start()
 
     def study_button_onClick(self):
-        pass
+        if self.load_data_thread.is_alive():
+            print("데이터를 로딩중입니다.")
+            return
+        Windows.changedWindow(self, "sls_select")
 
     def mode_button_onClick(self):
+        if self.load_data_thread.is_alive():
+            print("데이터를 로딩중입니다.")
+            return
         Windows.changedWindow(self, "mode")
 
     def quiz_button_onClick(self):
-        pass
+        if self.load_data_thread.is_alive():
+            print("데이터를 로딩중입니다.")
+            return
+        Windows.changedWindow(self, "sls_quiz", True)

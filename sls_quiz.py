@@ -35,7 +35,7 @@ def init(window):
     window.cap.set(cv2.CAP_PROP_FRAME_WIDTH, Config.CAMERA_WIDTH)  # 1280
     window.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, Config.CAMERA_HEIGHT)  # 720
     start = time.time()
-    while True:
+    while window.isPlay:
         ret, frame = window.cap.read()
         image, result = window.mp.mediapipe_detection(frame)
         window.mp.draw_styled_landmarks(image, result)
@@ -84,20 +84,31 @@ class SLSQuizWindow(QDialog, QWidget, form_mode):
 
     def init(self, args=None):
         self.setupUi(self)
+        self.isPlay = True
         self.lb_camera.setText("로딩중")
         self.init_thread = threading.Thread(target=init, args=(self,))
         self.init_thread.daemon = True
         self.init_thread.start()
 
     def setArgs(self, args):
-        pass
+        self.lb_camera.setText("로딩중")
+        if args is not None:
+            self.isPlay = True
+            self.init_thread = threading.Thread(target=init, args=(self,))
+            self.init_thread.daemon = True
+            self.init_thread.start()
 
     def study_button_onClick(self):
-        pass
+        if self.init_thread.is_alive():
+            self.isPlay = False
+            print("데이터를 로딩중입니다.")
+            return
+        Windows.changedWindow(self, "sls_select")
 
     def mode_button_onClick(self):
         if self.init_thread.is_alive():
-            print("데이터를 로딩중입니다")
+            self.isPlay = False
+            print("데이터를 로딩중입니다.")
             return
         Windows.changedWindow(self, "mode")
 
