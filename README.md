@@ -5,7 +5,7 @@ based
 https://github.com/hyeonslove/SignLanguageDetection
 
 
-dependency install
+dependency install m1 mac
 
     pip install mediapipe-silicon
     conda install -c apple tensorflow-deps
