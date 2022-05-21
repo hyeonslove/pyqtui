@@ -4,8 +4,8 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import threading
 import time
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from keras.models import Sequential
+from keras.layers import LSTM, Dense
 import cv2
 import random
 from sld.configs import Config
@@ -60,7 +60,7 @@ def init(window):
                 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
                 pixmap = QPixmap(convertToQtFormat)
-                pixmap = pixmap.scaledToWidth(1700)
+                pixmap = pixmap.scaledToWidth(800)
                 window.lb_camera.setPixmap(pixmap)  # scaledToHeight(200, Qt.SmoothTransformation)
                 # cv2.imshow("utils", image)
                 cv2.waitKey(2)
@@ -84,7 +84,7 @@ def init(window):
         img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         convertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
         pixmap = QPixmap(convertToQtFormat)
-        pixmap = pixmap.scaledToWidth(1700)
+        pixmap = pixmap.scaledToWidth(800)
         window.lb_camera.setPixmap(pixmap)  # scaledToHeight(200, Qt.SmoothTransformation)
         cv2.waitKey(1)
 
